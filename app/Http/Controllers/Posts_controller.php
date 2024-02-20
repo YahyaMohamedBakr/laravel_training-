@@ -7,6 +7,7 @@ use App\Models\Posts;
 use App\Models\Users;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use PharIo\Manifest\Author;
 use Psy\Command\EditCommand;
 
 
@@ -44,23 +45,24 @@ class Posts_controller extends Controller
 
 
  //add new post
-   function addNewPost($slug){
+   function editePost($slug){
 
-    if($slug == 'add-new'){
+    if(isset ($slug) && $slug == 'add-new'){
         return view('add_post');
-    }
-    if(!empty($slug)){
-    $posts= Posts::all();
-    $post = $posts->where('post_slug', $slug)->first();
-    $id = Cookie::get('user_id');
-    $author = $post->post_user;
+    }elseif(!empty($slug)){
 
-    if(!empty($post)||$author == $id){
-        return (view('add_post',['post'=>$post]));
+        $post =Posts::where('post_slug', $slug)->first();
+        $author =  $post->post_user?? null ;
+            if(empty($author)){
+                abort(404);
+            }elseif($author == Cookie::get('user_id')){
+                return (view('add_post',['post'=>$post]));
+            }else{
+                echo 'This article belongs to another user ';
+            }
     }else{
-        echo 'This article belongs to another user ';
+        abort(404);
     }
-}
 
    }
 
@@ -92,7 +94,7 @@ class Posts_controller extends Controller
 //  }
 
 
- function saveEditPost($slug=null){
+ function savePost($slug=null){
     if(isset($slug) && !empty($slug)){
         $post= Posts::where('post_slug', $slug)->first();
     }else{

@@ -83,13 +83,13 @@ Route::get('/posts/{slug}',
 //Add Post
 Route::get('posts/add_post/{slug}',
 
-[Posts_controller::class, 'addNewPost']
+[Posts_controller::class, 'editePost']
 
 )->Middleware('cookies');
 
 Route::post('posts/add_post/save_post',
 
-[Posts_controller::class, 'saveEditPost']
+[Posts_controller::class, 'savePost']
 
 )->Middleware('cookies');
 //Edit Post
@@ -98,5 +98,5 @@ Route::post('posts/add_post/save_post',
 // )->Middleware('cookies');
 
 Route::post('/posts/add_post/{slug}/save_post',
-[Posts_controller::class, 'saveEditPost']
-);
+[Posts_controller::class, 'savePost']
+)->Middleware('cookies');
