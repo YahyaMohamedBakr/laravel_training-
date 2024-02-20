@@ -55,6 +55,7 @@ Route::get('/welcome',
 
 )->middleware('cookies');
 
+//Register Routes
 
 //Home routes
 
@@ -80,22 +81,22 @@ Route::get('/posts/{slug}',
 [Posts_controller::class, 'singlePost']
 );
 //Add Post
-Route::get('/add_post',
+Route::get('posts/add_post/{slug}',
 
 [Posts_controller::class, 'addNewPost']
 
 )->Middleware('cookies');
 
-Route::post('/submit_new_post',
+Route::post('posts/add_post/save_post',
 
-[Posts_controller::class, 'saveNewPost']
+[Posts_controller::class, 'saveEditPost']
 
-);
-//Edit Post
-Route::get('/posts/{slug}/edit',
-[Posts_controller::class, 'editPost']
 )->Middleware('cookies');
+//Edit Post
+// Route::get('/posts/{slug}/edit',
+// [Posts_controller::class, 'editPost']
+// )->Middleware('cookies');
 
-Route::post('/posts/{slug}/save',
+Route::post('/posts/add_post/{slug}/save_post',
 [Posts_controller::class, 'saveEditPost']
 );

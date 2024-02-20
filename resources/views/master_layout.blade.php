@@ -32,6 +32,8 @@
       <link rel="stylesheet" href="{{url('')}}/css/owl.carousel.min.css">
       <link rel="stylesheet" href="{{url('')}}/css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+      <link href="{{url('')}}/style.css" rel="stylesheet">
    </head>
    <body>
       <!--header section start -->

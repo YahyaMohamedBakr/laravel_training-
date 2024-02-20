@@ -23,16 +23,12 @@ class Login_controller extends Controller
 
     public function login(){
 
-       // $userData = Login_model::getUserByUserAndPass($_POST['uname'],$_POST['psw']);
        $userData = Users::where('user_name',$_POST['uname'])->where('password', $_POST['psw']   )->first();
         if ($userData) {
-        //    echo'';
             $cookie = cookie('user_id', $userData->user_id, 60);
             $cookie2 = cookie('user_name', $userData->user_name, 60);
-           // ddd($cookie);
             return redirect('/welcome')->withCookie($cookie)->withCookie($cookie2);
         } else {
-           // echo '<script>alert("error in user or password"); window.location.href = "/login_app/public"</script>';
             return redirect('/')->withErrors(['msg'=>'user name or password is wrong']);
 
         }

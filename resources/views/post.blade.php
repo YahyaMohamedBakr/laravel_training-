@@ -17,7 +17,7 @@
                                  <ul>
                                     <li><a href="#">Like<span class="padding_10"><i class="fa fa-thumbs-up"></i></span></a></li>
                                     <li><a href="#">Comment<span class="padding_10"><i class="fa fa-comment"></i></span></a></li>
-                                    <li><a href="{{$post->post_slug}}/edit">Edit<span class="padding_10"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span></a></li>
+                                    <li><a href="add_post/{{$post->post_slug}}">Edit<span class="padding_10"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span></a></li>
                                  </ul>
                               </div>
                            </div>
